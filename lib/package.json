@@ -10,11 +10,17 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
-    "lint": "tslint -p . --fix"
+    "lint": "tslint -p . --fix",
+    "prepublishOnly": "npm run build"
   },
   "author": "Miha Jamsek <miha_jamsek@windowslive.com> (https://github.com/Jamsek-m)",
   "license": "ISC",
   "publishConfig": {
     "registry": "https://nexus.mjamsek.com/repository/npm-snapshots/"
+  },
+  "devDependencies": {
+    "rimraf": "~3.0.0",
+    "typescript": "~3.6.4",
+    "tslint": "^5.20.0"
   }
 }

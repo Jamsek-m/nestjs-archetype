@@ -31,23 +31,25 @@ pipeline {
                 }
             }
         }
-        stage("Install dependencies") {
+        stage("Deploy library") {
             steps {
-                withNPM(npmrcConfig: 'npm-public-file') {
-                    sh "npm install"
-                    sh "npm run link"
+                dir("lib") {
+                    withNPM(npmrcConfig: 'npm-public-file') {
+                        sh "npm install"
+                    }
+                    withNPM(npmrcConfig: 'npm-snapshot-file') {
+                        sh "npm publish"
+                    }
                 }
             }
         }
-        stage("Build project") {
+        stage("Build app") {
             steps {
-                sh "npm run build"
-            }
-        }
-        stage("Deploy library") {
-            steps {
-                withNPM(npmrcConfig: 'npm-snapshot-file') {
-                    sh "npm run publish:lib"
+                dir("app") {
+                    withNPM(npmrcConfig: 'npm-public-file') {
+                        sh "npm install"
+                    }
+                    sh "npm run build"
                 }
             }
         }
