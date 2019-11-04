@@ -15,13 +15,6 @@ pipeline {
     }
 
     stages {
-        stage("temp") {
-            steps {
-                withNPM(npmrcConfig: 'npm-public-file') {
-                    sh "npm cache verify"
-                }
-            }
-        }
         stage("Cloning git") {
             steps {
                 git branch: "master",
@@ -53,6 +46,7 @@ pipeline {
         stage("Build app") {
             steps {
                 dir("app") {
+                    sh "rm package-lock.json"
                     withNPM(npmrcConfig: 'npm-public-file') {
                         sh "npm install"
                     }
