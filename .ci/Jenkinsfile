@@ -15,6 +15,11 @@ pipeline {
     }
 
     stages {
+        stage("temp") {
+            withNPM(npmrcConfig: 'npm-public-file') {
+                sh "npm cache verify"
+            }
+        }
         stage("Cloning git") {
             steps {
                 git branch: "master",
