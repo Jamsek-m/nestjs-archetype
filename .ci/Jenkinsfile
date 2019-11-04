@@ -46,6 +46,7 @@ pipeline {
         stage("Build app") {
             steps {
                 dir("app") {
+                    // remove this when using release version of library
                     sh "rm package-lock.json"
                     withNPM(npmrcConfig: 'npm-public-file') {
                         sh "npm install"
