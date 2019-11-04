@@ -1,0 +1,20 @@
+{
+  "name": "@mjamsek/sample-lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/public_api.js",
+  "types": "dist/public_api.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "lint": "tslint -p . --fix"
+  },
+  "author": "Miha Jamsek <miha_jamsek@windowslive.com> (https://github.com/Jamsek-m)",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://nexus.mjamsek.com/repository/npm-snapshots/"
+  }
+}
