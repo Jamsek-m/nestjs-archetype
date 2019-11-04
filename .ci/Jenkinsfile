@@ -19,7 +19,7 @@ pipeline {
             steps {
                 git branch: "master",
                         credentialsId: "github-username",
-                        url: "https://github.com/Jamsek-m/sample-repo.git"
+                        url: "https://github.com/Jamsek-m/nestjs-archetype.git"
             }
         }
         stage("Set environment variables") {
